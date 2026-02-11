@@ -3,34 +3,37 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import Chats from "./pages/Chats";
 import VideoRoom from "./pages/VideoRoom";
-import Auth from "./pages/Auth"; // Make sure this file exists!
+import Auth from "./pages/Auth";
+
+// This component checks for the token EVERY time you try to visit a page
+const ProtectedRoute = ({ children }) => {
+  const token = localStorage.getItem("token");
+  return token ? children : <Navigate to="/auth" />;
+};
 
 function App() {
-  // Check if user is logged in (looking for a token in local storage)
-  const isAuthenticated = !!localStorage.getItem("token");
-
   return (
     <BrowserRouter>
       <Routes>
-        {/* Login Page */}
+        {/* Public Route */}
         <Route path="/auth" element={<Auth />} />
 
-        {/* Protected Routes: If not logged in, go to /auth */}
+        {/* Protected Routes */}
         <Route 
           path="/dashboard" 
-          element={isAuthenticated ? <Dashboard /> : <Navigate to="/auth" />} 
+          element={<ProtectedRoute><Dashboard /></ProtectedRoute>} 
         />
         <Route 
           path="/chats/:groupId" 
-          element={isAuthenticated ? <Chats /> : <Navigate to="/auth" />} 
+          element={<ProtectedRoute><Chats /></ProtectedRoute>} 
         />
         <Route 
           path="/room/:roomId" 
-          element={isAuthenticated ? <VideoRoom /> : <Navigate to="/auth" />} 
+          element={<ProtectedRoute><VideoRoom /></ProtectedRoute>} 
         />
 
         {/* Default Route */}
-        <Route path="/" element={<Navigate to={isAuthenticated ? "/dashboard" : "/auth"} />} />
+        <Route path="/" element={<Navigate to="/dashboard" />} />
       </Routes>
     </BrowserRouter>
   );
