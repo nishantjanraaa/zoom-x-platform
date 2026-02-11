@@ -1,0 +1,123 @@
+/* Container Layout */
+.dash-container {
+  display: flex;
+  height: 100vh;
+  background: #020617; /* Dark Navy Theme */
+  color: #f8fafc;
+}
+
+/* Sidebar Styling */
+.sidebar {
+  width: 260px;
+  background: #0b1120;
+  border-right: 1px solid #1e293b;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 20px;
+}
+
+.logo { color: #2563eb; font-size: 32px; font-weight: bold; margin-bottom: 50px; }
+
+.nav-item {
+  padding: 15px 20px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  transition: 0.3s ease;
+}
+
+.nav-item.active { background: rgba(37, 99, 235, 0.15); color: #3b82f6; font-weight: 600; }
+.nav-item:hover { background: #1e293b; color: white; }
+
+.logout-btn { 
+  margin-top: auto; 
+  background: transparent; 
+  border: 1px solid #ef4444; 
+  color: #ef4444; 
+  padding: 12px; 
+  border-radius: 10px; 
+  cursor: pointer; 
+}
+
+/* Main Area Centering */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px;
+}
+
+.content-header { text-align: center; margin-bottom: 60px; }
+.content-header h1 { font-size: 48px; margin-bottom: 10px; font-weight: 700; }
+.content-header p { color: #94a3b8; font-size: 18px; }
+
+/* The Grid and Glass Cards */
+.action-grid {
+  display: flex;
+  gap: 40px;
+  width: 100%;
+  justify-content: center;
+}
+
+.glass-card {
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(12px);
+  padding: 50px 40px;
+  border-radius: 30px;
+  border: 1px solid #1e293b;
+  width: 400px;
+  text-align: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.glass-card:hover { transform: translateY(-10px); }
+
+/* Theme Accents */
+.chat-border { border-bottom: 4px solid #10b981; } /* Green accent */
+.video-border { border-bottom: 4px solid #2563eb; } /* Blue accent */
+
+.card-icon { font-size: 60px; margin-bottom: 25px; }
+
+/* Forms and Buttons */
+.join-form { display: flex; flex-direction: column; gap: 15px; }
+
+.join-form input {
+  padding: 14px;
+  background: #020617;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  color: white;
+  text-align: center;
+}
+
+.btn-primary { 
+  background: #2563eb; 
+  color: white; 
+  border: none; 
+  padding: 14px; 
+  border-radius: 12px; 
+  font-weight: bold; 
+  cursor: pointer; 
+}
+
+.btn-glow { 
+  background: transparent; 
+  border: 1px solid #2563eb; 
+  color: #2563eb; 
+  padding: 14px; 
+  border-radius: 12px; 
+  font-weight: bold; 
+  cursor: pointer; 
+}
+
+.btn-glow:hover { 
+  background: #2563eb; 
+  color: white; 
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.4); 
+}

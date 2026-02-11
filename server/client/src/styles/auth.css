@@ -1,0 +1,236 @@
+/* RESET - Exact same as your Dashboard */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: #020617;
+  color: white;
+  overflow: hidden;
+}
+
+/* THE AUTH PAGE WRAPPER */
+.auth-page {
+  display: flex;
+  justify-content: flex-end; /* Shifts card to the right */
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  padding-right: 8%; /* Spacing for the login card */
+  background: #000;
+  position: relative;
+}
+
+/* THE MOVING AURA - Smooth dark blue to white transition */
+.auth-page::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  /* Default Blue for Login */
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, transparent 70%);
+  filter: blur(100px);
+  animation: auraMovement 20s infinite alternate;
+  transition: background 1s ease;
+  z-index: 1;
+}
+
+.auth-page.register-mode::before {
+  /* White for Register */
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, transparent 70%);
+}
+
+@keyframes auraMovement {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(20%, 15%); }
+}
+
+/* SIDE TEXT (Left Side) */
+.side-text {
+  position: absolute;
+  left: 60px;
+  top: 35%;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.line {
+  display: block;
+  font-size: 32px;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* WORD BY WORD ANIMATION */
+.word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(15px);
+  animation: wordReveal 0.6s forwards;
+}
+
+@keyframes wordReveal {
+  to {
+    opacity: 0.5; /* Watermark effect like your dashboard text */
+    transform: translateY(0);
+  }
+}
+
+/* LOGIN CARD - Size & Shadow from your .card code */
+.auth-card {
+  width: 450px; /* Bigger width */
+  background: rgba(15, 23, 42, 0.95);
+  padding: 55px; /* More internal space */
+  border-radius: 20px;
+  box-shadow: 0 0 40px rgba(37, 99, 235, 0.2);
+  border: 1px solid #1e293b;
+  z-index: 10;
+  transition: 0.3s ease;
+}
+
+.auth-card:hover {
+  transform: translateY(-8px); /* Your exact hover animation */
+  box-shadow: 0 0 40px #2563ebaa;
+}
+
+.auth-card h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.auth-desc {
+  font-size: 14px;
+  color: #cbd5f5;
+  margin-bottom: 25px;
+}
+
+/* INPUTS - Exact same as your Dashboard */
+.auth-card input {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  background: #020617;
+  border: 1px solid #1e293b;
+  color: white;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.auth-card input:focus {
+  border-color: #2563eb;
+  outline: none;
+}
+
+/* BUTTON - Exact same as your Dashboard */
+.auth-card button {
+  width: 100%;
+  padding: 15px;
+  background: #2563eb;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+.auth-card button:hover {
+  background: #1d4ed8;
+  box-shadow: 0 0 12px #2563eb;
+}
+
+.switch-area {
+  margin-top: 25px;
+  font-size: 14px;
+  color: #94a3b8;
+}
+
+.switch-area span {
+  color: #2563eb;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+/* BRAND (Bottom Left) */
+.brand {
+  position: absolute;
+  bottom: 40px;
+  left: 60px;
+  color: #1e293b;
+  font-size: 14px;
+  font-weight: 600;
+  z-index: 5;
+}
+
+.auth-page {
+  display: flex;
+  justify-content: flex-end; 
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  /* This moves the box further left from the edge */
+  padding-right: 18%; 
+  background: #000;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Update your .auth-page to ensure it handles the background elements */
+.auth-page {
+  position: relative;
+  background: #000;
+  overflow: hidden; /* Keeps the aura from creating scrollbars */
+  z-index: 0;
+}
+
+/* THE BLUE AURA BALL */
+.auth-page::before {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.4) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: -1; /* Sits behind everything */
+  top: 10%;
+  left: 10%;
+  animation: moveBlue 15s infinite alternate ease-in-out;
+}
+
+/* THE WHITE AURA BALL */
+.auth-page::after {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: -1;
+  bottom: 10%;
+  right: 20%;
+  animation: moveWhite 20s infinite alternate ease-in-out;
+}
+
+@keyframes moveBlue {
+  from { transform: translate(0, 0); }
+  to { transform: translate(100px, 150px); }
+}
+
+@keyframes moveWhite {
+  from { transform: translate(0, 0); }
+  to { transform: translate(-150px, -100px); }
+}

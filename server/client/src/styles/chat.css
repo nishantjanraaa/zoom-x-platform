@@ -1,0 +1,151 @@
+.chat-layout {
+  display: flex;
+  height: 100vh;
+  background: #020617;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Mini Sidebar */
+.mini-sidebar {
+  width: 72px;
+  background: #0b1120;
+  border-right: 1px solid #1e293b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+  gap: 20px;
+}
+
+.avatar-circle {
+  width: 48px;
+  height: 48px;
+  background: #3b82f6;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.back-circle {
+  width: 48px;
+  height: 48px;
+  background: #1e293b;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Chat Section */
+.chat-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-top-bar {
+  height: 70px;
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(10px);
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #1e293b;
+}
+
+.status-dot { color: #10b981; font-size: 12px; margin-top: 4px; }
+
+/* Message Area */
+.messages-container {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.message-wrapper { display: flex; width: 100%; }
+.message-wrapper.sent { justify-content: flex-end; }
+.message-wrapper.system { justify-content: center; }
+
+.message-bubble {
+  padding: 12px 20px;
+  border-radius: 18px;
+  max-width: 60%;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.sent .message-bubble {
+  background: #2563eb;
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+.received .message-bubble {
+  background: #1e293b;
+  color: #e2e8f0;
+  border-bottom-left-radius: 4px;
+}
+
+.system .message-bubble {
+  background: transparent;
+  color: #64748b;
+  font-size: 13px;
+  font-style: italic;
+}
+
+/* Input Bar */
+.chat-input-wrapper {
+  padding: 25px 40px;
+  background: #020617;
+  display: flex;
+  gap: 15px;
+}
+
+.chat-input-wrapper input {
+  flex: 1;
+  background: #0f172a;
+  border: 1px solid #1e293b;
+  padding: 15px 25px;
+  border-radius: 12px;
+  color: white;
+  outline: none;
+}
+
+.send-icon-btn {
+  background: #2563eb;
+  border: none;
+  width: 50px;
+  border-radius: 12px;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Buttons */
+.btn-secondary { background: #1e293b; color: white; border: 1px solid #334155; padding: 8px 16px; border-radius: 8px; cursor: pointer; }
+.btn-danger { background: #7f1d1d; color: #f87171; border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer; }
+/* Add this to your existing chat.css */
+.msg-time {
+  font-size: 10px;
+  display: block;
+  margin-top: 5px;
+  opacity: 0.7;
+  text-align: right;
+}
+
+.message-wrapper.received { justify-content: flex-start; }
+.message-wrapper.sent { justify-content: flex-end; }
+
+.message-wrapper.received .message-bubble {
+  background: #1e293b;
+  color: white;
+  border-bottom-left-radius: 2px;
+}
