@@ -1,10 +1,12 @@
 import { useState } from "react";
 import api from "../services/api";
+import { useNavigate } from "react-router-dom";
 import "../styles/auth.css";
 
 function Auth() {
   const [isLogin, setIsLogin] = useState(true);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   const [form, setForm] = useState({ name: "", email: "", password: "" });
 
   const marketingLines = ["Build Better Meetings", "Connect Worldwide", "Collaborate Securely", "Grow Your Network"];
@@ -16,10 +18,11 @@ function Auth() {
       if (isLogin) {
         const res = await api.post("/auth/login", { email: form.email, password: form.password });
         localStorage.setItem("token", res.data.token);
-        window.location.href = "/dashboard";
+        navigate("/dashboard");
       } else {
         await api.post("/auth/register", form);
         setIsLogin(true);
+        setForm({ name: "", email: "", password: "" });
       }
     } catch (err) { alert(err.response?.data?.msg || "Login failed"); }
     setLoading(false);
