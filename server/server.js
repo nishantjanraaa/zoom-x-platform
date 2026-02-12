@@ -11,8 +11,12 @@ connectDB();
 
 const app = express();
 
-// Middleware
-app.use(cors());
+// Middleware - UPDATED CORS FOR VERCEL
+app.use(cors({
+  origin: ["https://zoom-x-platform.vercel.app", "http://localhost:3000"],
+  credentials: true
+}));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -28,8 +32,10 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: ["https://your-live-website.vercel.app", "http://localhost:3000"],
+    // UPDATED ORIGIN TO MATCH YOUR LIVE SITE
+    origin: ["https://zoom-x-platform.vercel.app", "http://localhost:3000"],
     methods: ["GET", "POST"],
+    credentials: true
   },
 });
 
