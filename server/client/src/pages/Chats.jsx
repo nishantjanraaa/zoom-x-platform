@@ -26,8 +26,12 @@ function Chats() {
     socket.on("receive_message", (data) => {
       setChatHistory((list) => [...list, { ...data, type: "received" }]);
     });
-
-    return () => socket.off("receive_message");
+    
+  return () => {
+  socket.off("receive_message");
+  socket.emit("leave_room", groupId);
+};
+    
   }, [groupId]);
 
   useEffect(() => {
