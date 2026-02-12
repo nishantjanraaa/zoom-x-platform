@@ -18,7 +18,7 @@ function Auth() {
       if (isLogin) {
         const res = await api.post("/auth/login", { email: form.email, password: form.password });
         localStorage.setItem("token", res.data.token);
-        navigate("/dashboard");
+        window.location.href = "/dashboard";
       } else {
         await api.post("/auth/register", form);
         setIsLogin(true);
