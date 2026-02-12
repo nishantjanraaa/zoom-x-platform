@@ -25,8 +25,12 @@ function Dashboard() {
     const id = inputValue.includes(prefix) ? inputValue.split(prefix)[1] : inputValue;
     
     navigate(view === "chat" ? `/chats/${id}` : `/room/${id}`);
+    setInputValue("");
   };
-
+  const handleLogout = () => {
+  localStorage.removeItem("token");
+  navigate("/auth");
+};
   return (
     <div className="dash-container">
       {/* SIDEBAR - Exactly like your Screenshot (118) */}
@@ -46,7 +50,7 @@ function Dashboard() {
             <span className="icon">📹</span> Video Call
           </div>
         </nav>
-        <button className="logout-btn" onClick={() => navigate("/")}>Logout</button>
+        <button className="logout-btn" onClick={handleLogout}>Logout</button>
       </aside>
 
       {/* MAIN CONTENT AREA */}
